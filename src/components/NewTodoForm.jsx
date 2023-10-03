@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
 
-function NewTodoForm({ onSubmit }) {
+function NewTodoForm({ onSubmit, todos }) {
 	const [newItem, setNewItem] = useState("");
 
 	const inputRef = useRef();
@@ -13,7 +13,9 @@ function NewTodoForm({ onSubmit }) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (newItem === "") return;
+		if (newItem === "" || newItem.trim() === "") return;
+		const existingItem = todos.filter((x) => x.title === newItem);
+		if (existingItem.length !== 0) return;
 		onSubmit(newItem);
 		setNewItem("");
 	}

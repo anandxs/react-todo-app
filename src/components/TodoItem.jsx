@@ -1,7 +1,7 @@
 function TodoItem({ id, title, completed, toggleTodo, deleteTodo }) {
 	return (
 		<li>
-			<label>
+			<label className="list-item">
 				<input
 					type="checkbox"
 					value={completed}

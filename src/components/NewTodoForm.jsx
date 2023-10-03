@@ -1,7 +1,15 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 
 function NewTodoForm({ onSubmit }) {
 	const [newItem, setNewItem] = useState("");
+
+	const inputRef = useRef();
+
+	useEffect(() => {
+		inputRef.current.focus();
+	});
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -13,10 +21,12 @@ function NewTodoForm({ onSubmit }) {
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="new-todo">New Item</label>
+				<label htmlFor="new-todo">Add New Item</label>
 				<input
+					ref={inputRef}
 					type="text"
 					id="new-todo"
+					placeholder="Enter your task here"
 					value={newItem}
 					onChange={(e) => setNewItem(e.target.value)}
 				/>

@@ -2,7 +2,7 @@ import TodoItem from "./TodoItem";
 
 function TodoList({ todos, toggleTodo, deleteTodo }) {
 	return (
-		<>
+		<div className="todoList">
 			<h2>Todo List</h2>
 			<ul>
 				{todos.map((todo) => (
@@ -14,7 +14,7 @@ function TodoList({ todos, toggleTodo, deleteTodo }) {
 					/>
 				))}
 			</ul>
-		</>
+		</div>
 	);
 }
 
